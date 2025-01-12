@@ -1,9 +1,3 @@
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 # AI PDF Chatbot
 
 This repository contains a Laravel application that leverages [Laravel Prism](https://github.com/nunomaduro/prism) and [Spatie's PDF-to-Text](https://github.com/spatie/pdf-to-text) packages to create an AI chatbot capable of answering questions about PDF documents.
