@@ -1,65 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# AI PDF Chatbot
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This repository contains a Laravel application that leverages [Laravel Prism](https://github.com/nunomaduro/prism) and [Spatie's PDF-to-Text](https://github.com/spatie/pdf-to-text) packages to create an AI chatbot capable of answering questions about PDF documents.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **PDF Parsing**: Extract text from PDFs using Spatie's pdf-to-text library.
+- **AI Chat Integration**: Use Laravel Prism to power AI-driven question-answering capabilities.
 
-## Learning Laravel
+## Prerequisites
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Before you begin, ensure you have the following installed:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- PHP 8.2 or higher
+- Composer
+- Laravel ^11.31
+- A PDF parsing tool (default: `pdftotext`)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+> **Note**: For PDF parsing, `pdftotext` must be installed on your server. [Installation Guide](https://github.com/spatie/pdf-to-text#requirements)
 
-## Laravel Sponsors
+## Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/cvtmal/chatPDF
+   cd chatPDF
+   ```
 
-### Premium Partners
+2. **Install dependencies**:
+   ```bash
+   composer install
+   npm install && npm run dev
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. **Set up environment variables**:
+   Copy `.env.example` to `.env` and configure your database and other settings:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Update the following variables in the `.env` file:
+   ```env
+   OPENAI_URL=
+   OPENAI_API_KEY=
+   OPENAI_ORGANIZATION=
+   ANTHROPIC_API_KEY=
+   ANTHROPIC_API_VERSION=
+   OLLAMA_URL=
+   MISTRAL_API_KEY=
+   MISTRAL_URL=
+   GROQ_API_KEY=
+   GROQ_URL=
+   XAI_API_KEY=
+   XAI_URL=
+   GEMINI_API_KEY=
+   GEMINI_URL=
+   SERPS_API_KEY=
+   ```
+
+4. **Generate application key**:
+   ```bash
+   php artisan key:generate
+   ```
+
+5. **Run migrations**:
+   ```bash
+   php artisan migrate
+   ```
+
+6. **Start the application**:
+   ```bash
+   php artisan serve
+   ```
+
+   Visit the application at `http://localhost:8000`.
+
+## Usage
+
+1. Upload a PDF document using the interface.
+2. Ask questions related to the uploaded PDF.
+3. The chatbot will provide AI-driven answers based on the content of the PDF.
+
+## Configuration
+
+### Prism AI
+Ensure that your Laravel Prism configuration is set up correctly. Refer to the [Laravel Prism Documentation](https://github.com/nunomaduro/prism) for setup instructions.
+
+### Spatie PDF-to-Text
+The package uses the `pdftotext` binary to extract text from PDFs. Verify that `pdftotext` is correctly installed on your system and accessible in the PATH.
+
+## Testing
+
+Run the test suite to ensure everything is working as expected:
+```bash
+php artisan test
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are welcome! Please follow these steps:
 
-## Code of Conduct
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push to the branch.
+5. Open a pull request.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## License
 
-## Security Vulnerabilities
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Credits
+
+- [Laravel Prism](https://github.com/nunomaduro/prism)
+- [Spatie PDF-to-Text](https://github.com/spatie/pdf-to-text)
 
 ## License
 
