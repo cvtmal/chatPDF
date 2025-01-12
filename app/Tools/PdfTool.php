@@ -8,6 +8,7 @@ use Spatie\PdfToText\Pdf;
 class PdfTool extends Tool
 {
     private ?string $pdfContent = null;
+
     private string $spatiePath = '/opt/homebrew/bin/pdftotext';
 
     public function __construct()
@@ -26,8 +27,8 @@ class PdfTool extends Tool
 
     public function __invoke(string $query): string
     {
-        if (!$this->pdfContent) {
-            return "No PDF document is currently loaded.";
+        if (! $this->pdfContent) {
+            return 'No PDF document is currently loaded.';
         }
 
         return $this->pdfContent;
