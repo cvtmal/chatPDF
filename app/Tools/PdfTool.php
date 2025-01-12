@@ -30,8 +30,6 @@ class PdfTool extends Tool
             return "No PDF document is currently loaded.";
         }
 
-        // Return a context-relevant portion of the PDF content
-        // You might want to implement more sophisticated search/context extraction here
         return $this->pdfContent;
     }
 }
